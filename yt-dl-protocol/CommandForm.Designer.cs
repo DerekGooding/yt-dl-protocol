@@ -1,4 +1,6 @@
-﻿namespace yt_dl_protocol
+﻿using yt_dl_protocol.External;
+
+namespace yt_dl_protocol
 {
     partial class CommandForm
     {
@@ -31,7 +33,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommandForm));
             this.CommandOutputTextBox = new System.Windows.Forms.TextBox();
             this.StopOkButton = new System.Windows.Forms.Button();
-            this.DownloadProgressBar = new ProgressBarSample.TextProgressBar();
+            this.DownloadProgressBar = new TextProgressBar();
             this.SuspendLayout();
             // 
             // CommandOutputTextBox
@@ -78,7 +80,7 @@
             this.DownloadProgressBar.TabIndex = 17;
             this.DownloadProgressBar.TextColor = System.Drawing.Color.Black;
             this.DownloadProgressBar.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DownloadProgressBar.VisualMode = ProgressBarSample.ProgressBarDisplayMode.Percentage;
+            this.DownloadProgressBar.VisualMode = ProgressBarDisplayMode.Percentage;
             // 
             // CommandForm
             // 
@@ -110,7 +112,7 @@
 
         private System.Windows.Forms.TextBox CommandOutputTextBox;
         private System.Windows.Forms.Button StopOkButton;
-        private ProgressBarSample.TextProgressBar DownloadProgressBar;
+        private TextProgressBar DownloadProgressBar;
     }
 }
 

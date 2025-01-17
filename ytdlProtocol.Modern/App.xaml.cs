@@ -24,8 +24,8 @@ public partial class App
     // https://docs.microsoft.com/dotnet/core/extensions/logging
     private static readonly IHost _host = Host
         .CreateDefaultBuilder()
-        .ConfigureAppConfiguration(c => { c.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)); })
-        .ConfigureServices((context, services) =>
+        .ConfigureAppConfiguration(c => c.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location)))
+        .ConfigureServices((_, services) =>
         {
             services.AddHostedService<ApplicationHostService>();
 
@@ -47,8 +47,6 @@ public partial class App
 
             services.AddSingleton<DashboardPage>();
             services.AddSingleton<DashboardViewModel>();
-            services.AddSingleton<DataPage>();
-            services.AddSingleton<DataViewModel>();
             services.AddSingleton<SettingsPage>();
             services.AddSingleton<SettingsViewModel>();
         }).Build();
@@ -59,18 +57,12 @@ public partial class App
     /// <typeparam name="T">Type of the service to get.</typeparam>
     /// <returns>Instance of the service or <see langword="null"/>.</returns>
     public static T GetService<T>()
-        where T : class
-    {
-        return _host.Services.GetService(typeof(T)) as T;
-    }
+        where T : class => _host.Services.GetService(typeof(T)) as T;
 
     /// <summary>
     /// Occurs when the application is loading.
     /// </summary>
-    private void OnStartup(object sender, StartupEventArgs e)
-    {
-        _host.Start();
-    }
+    private void OnStartup(object sender, StartupEventArgs e) => _host.Start();
 
     /// <summary>
     /// Occurs when the application is closing.

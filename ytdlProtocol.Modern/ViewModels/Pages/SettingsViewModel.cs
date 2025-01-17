@@ -23,16 +23,14 @@ public partial class SettingsViewModel : ObservableObject, INavigationAware
     private void InitializeViewModel()
     {
         CurrentTheme = ApplicationThemeManager.GetAppTheme();
-        AppVersion = $"UiDesktopApp1 - {GetAssemblyVersion()}";
+        AppVersion = $"yt-dl-protocol - {GetAssemblyVersion()}";
 
         _isInitialized = true;
     }
 
-    private string GetAssemblyVersion()
-    {
-        return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString()
-            ?? String.Empty;
-    }
+    private string GetAssemblyVersion() 
+        => System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString()
+            ?? string.Empty;
 
     [RelayCommand]
     private void OnChangeTheme(string parameter)

@@ -17,20 +17,54 @@
     mc:Ignorable="d">
 
     <Grid VerticalAlignment="Top">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <ui:TextBlock Text="Protocol status:" Width="150" VerticalAlignment="Center"/>
+                <ui:Button Content="Register" Width="150"/>
+                <ui:Button Content="Unregister" Width="150"/>
+                <ui:Button>
+                    <ui:Button.Content>
+                        <Image />
+                    </ui:Button.Content>
+                </ui:Button>
+            </StackPanel>
 
-        <ui:Button
-            Grid.Column="0"
-            Command="{Binding ViewModel.CounterIncrementCommand, Mode=OneWay}"
-            Content="Click me!"
-            Icon="Fluent24" />
-        <TextBlock
-            Grid.Column="1"
-            Margin="12,0,0,0"
-            VerticalAlignment="Center"
-            Text="{Binding ViewModel.Counter, Mode=OneWay}" />
+            <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                <ui:TextBlock Text="Executable path:" Width="150" VerticalAlignment="Center"/>
+                <ui:TextBox Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <ui:TextBlock Text="Download path:" Width="150" VerticalAlignment="Center"/>
+                <ui:TextBox Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <ui:TextBlock Text="Additional args:" Width="150" VerticalAlignment="Center"/>
+                <ui:TextBox Width="300"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                <ui:ToggleSwitch Content="Automatically close the command window when download is finished?"/>
+            </StackPanel>
+
+            <DockPanel Margin="0 30 0 0" Width="500" HorizontalAlignment="Left">
+                <ui:Button DockPanel.Dock="Left" Margin="50 0 0 0">
+                    <ui:Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <ui:TextBlock Text="Save settings"/>
+                        </StackPanel>
+                    </ui:Button.Content>
+                </ui:Button>
+                <ui:Button DockPanel.Dock="Right" Margin="0 0 50 0">
+                    <ui:Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <ui:TextBlock Text="Bookmarklet guide"/>
+                        </StackPanel>
+                    </ui:Button.Content>
+                </ui:Button>
+                <Grid/>
+            </DockPanel>
+        </StackPanel>
     </Grid>
 </Page>

@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ProgressBarSample;
+namespace yt_dl_protocol.External;
 
 public enum ProgressBarDisplayMode
 {
@@ -19,13 +19,15 @@ public class TextProgressBar : ProgressBar
 {
     [Description("Font of the text on ProgressBar"), Category("Additional Options")]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public Font TextFont { get; set; } = new Font(FontFamily.GenericSerif, 11, FontStyle.Bold|FontStyle.Italic);
-    
-    private SolidBrush _textColourBrush = (SolidBrush) Brushes.Black;
+    public Font TextFont { get; set; } = new Font(FontFamily.GenericSerif, 11, FontStyle.Bold | FontStyle.Italic);
+
+    private SolidBrush _textColourBrush = (SolidBrush)Brushes.Black;
     [Category("Additional Options")]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public Color TextColor {
-        get {
+    public Color TextColor
+    {
+        get
+        {
             return _textColourBrush.Color;
         }
         set
@@ -35,7 +37,7 @@ public class TextProgressBar : ProgressBar
         }
     }
 
-    private SolidBrush _progressColourBrush = (SolidBrush) Brushes.LightGreen;
+    private SolidBrush _progressColourBrush = (SolidBrush)Brushes.LightGreen;
     [Category("Additional Options"), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color ProgressColor
@@ -54,8 +56,10 @@ public class TextProgressBar : ProgressBar
     private ProgressBarDisplayMode _visualMode = ProgressBarDisplayMode.CurrProgress;
     [Category("Additional Options"), Browsable(true)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public ProgressBarDisplayMode VisualMode {
-        get {
+    public ProgressBarDisplayMode VisualMode
+    {
+        get
+        {
             return _visualMode;
         }
         set
@@ -87,16 +91,16 @@ public class TextProgressBar : ProgressBar
 
             switch (VisualMode)
             {
-                case (ProgressBarDisplayMode.Percentage):
+                case ProgressBarDisplayMode.Percentage:
                     text = PercentageStr;
                     break;
-                case (ProgressBarDisplayMode.CurrProgress):
+                case ProgressBarDisplayMode.CurrProgress:
                     text = CurrProgressStr;
                     break;
-                case (ProgressBarDisplayMode.TextAndCurrProgress):
+                case ProgressBarDisplayMode.TextAndCurrProgress:
                     text = $"{CustomText}: {CurrProgressStr}";
                     break;
-                case (ProgressBarDisplayMode.TextAndPercentage):
+                case ProgressBarDisplayMode.TextAndPercentage:
                     text = $"{CustomText}: {PercentageStr}";
                     break;
                 case ProgressBarDisplayMode.NoText:
@@ -125,7 +129,7 @@ public class TextProgressBar : ProgressBar
     protected override void OnPaint(PaintEventArgs e)
     {
         Graphics g = e.Graphics;
-        
+
         DrawProgressBar(g);
 
         DrawStringIfNeeded(g);
@@ -141,7 +145,7 @@ public class TextProgressBar : ProgressBar
 
         if (Value > 0)
         {
-            Rectangle clip = new Rectangle(rect.X, rect.Y, (int)Math.Round(((float)Value / Maximum) * rect.Width), rect.Height);
+            Rectangle clip = new Rectangle(rect.X, rect.Y, (int)Math.Round((float)Value / Maximum * rect.Width), rect.Height);
 
             g.FillRectangle(_progressColourBrush, clip);
         }
@@ -151,17 +155,17 @@ public class TextProgressBar : ProgressBar
     {
         if (VisualMode != ProgressBarDisplayMode.NoText)
         {
-            
+
             string text = TextToDraw;
 
             SizeF len = g.MeasureString(text, TextFont);
 
-            Point location = new Point(((Width / 2) - (int)len.Width / 2), ((Height / 2) - (int)len.Height / 2));
-            
-            g.DrawString(text, TextFont, (Brush)_textColourBrush, location);
+            Point location = new Point(Width / 2 - (int)len.Width / 2, Height / 2 - (int)len.Height / 2);
+
+            g.DrawString(text, TextFont, _textColourBrush, location);
         }
     }
-    
+
     public new void Dispose()
     {
         _textColourBrush.Dispose();
