@@ -20,8 +20,8 @@
         <StackPanel>
             <StackPanel Orientation="Horizontal">
                 <ui:TextBlock Text="Protocol status:" Width="150" VerticalAlignment="Center"/>
-                <ui:Button Content="Register" Width="150"/>
-                <ui:Button Content="Unregister" Width="150"/>
+                <ui:Button Content="Register" Width="150" Command="{Binding ViewModel.RegisterCommand}"/>
+                <ui:Button Content="Unregister" Width="150" Command="{Binding ViewModel.UnregisterCommand}"/>
                 <ui:Button>
                     <ui:Button.Content>
                         <Image />
@@ -31,32 +31,33 @@
 
             <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
                 <ui:TextBlock Text="Executable path:" Width="150" VerticalAlignment="Center"/>
-                <ui:TextBox Width="300"/>
+                <ui:TextBox Width="300" Text="{Binding ViewModel.YtDlDownloadPath}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <ui:TextBlock Text="Download path:" Width="150" VerticalAlignment="Center"/>
-                <ui:TextBox Width="300"/>
+                <ui:TextBox Width="300" Text="{Binding ViewModel.DownloadPath}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <ui:TextBlock Text="Additional args:" Width="150" VerticalAlignment="Center"/>
-                <ui:TextBox Width="300"/>
+                <ui:TextBox Width="300" Text="{Binding ViewModel.AdditionalArgs}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
-                <ui:ToggleSwitch Content="Automatically close the command window when download is finished?"/>
+                <ui:ToggleSwitch IsChecked="{Binding ViewModel.IsAutoClose, Mode=TwoWay}"
+                    Content="Automatically close the command window when download is finished?"/>
             </StackPanel>
 
             <DockPanel Margin="0 30 0 0" Width="500" HorizontalAlignment="Left">
-                <ui:Button DockPanel.Dock="Left" Margin="50 0 0 0">
+                <ui:Button DockPanel.Dock="Left" Margin="50 0 0 0" Command="{Binding ViewModel.SaveCommand}">
                     <ui:Button.Content>
                         <StackPanel Orientation="Horizontal">
                             <ui:TextBlock Text="Save settings"/>
                         </StackPanel>
                     </ui:Button.Content>
                 </ui:Button>
-                <ui:Button DockPanel.Dock="Right" Margin="0 0 50 0">
+                <ui:Button DockPanel.Dock="Right" Margin="0 0 50 0" Command="{Binding ViewModel.GuideCommand}">
                     <ui:Button.Content>
                         <StackPanel Orientation="Horizontal">
                             <ui:TextBlock Text="Bookmarklet guide"/>
