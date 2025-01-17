@@ -18,10 +18,12 @@ namespace ProgressBarSample
     public class TextProgressBar : ProgressBar
     {
         [Description("Font of the text on ProgressBar"), Category("Additional Options")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Font TextFont { get; set; } = new Font(FontFamily.GenericSerif, 11, FontStyle.Bold|FontStyle.Italic);
         
         private SolidBrush _textColourBrush = (SolidBrush) Brushes.Black;
         [Category("Additional Options")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color TextColor {
             get {
                 return _textColourBrush.Color;
@@ -35,6 +37,7 @@ namespace ProgressBarSample
 
         private SolidBrush _progressColourBrush = (SolidBrush) Brushes.LightGreen;
         [Category("Additional Options"), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Color ProgressColor
         {
             get
@@ -50,6 +53,7 @@ namespace ProgressBarSample
 
         private ProgressBarDisplayMode _visualMode = ProgressBarDisplayMode.CurrProgress;
         [Category("Additional Options"), Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public ProgressBarDisplayMode VisualMode {
             get {
                 return _visualMode;
@@ -64,6 +68,7 @@ namespace ProgressBarSample
         private string _text = string.Empty;
 
         [Description("If it's empty, % will be shown"), Category("Additional Options"), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string CustomText
         {
             get => _text;

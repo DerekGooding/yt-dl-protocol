@@ -54,7 +54,7 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>yt-dl-protocol_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
@@ -63,7 +63,6 @@
     <Compile Update="External\TextProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <None Include="yt-dl-protocol_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8.0">
