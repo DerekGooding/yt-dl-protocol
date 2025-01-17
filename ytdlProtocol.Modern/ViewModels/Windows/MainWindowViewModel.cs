@@ -5,14 +5,14 @@ namespace ytdlProtocol.Modern.ViewModels.Windows;
 public partial class MainWindowViewModel : ObservableObject
 {
     [ObservableProperty]
-    private string _applicationTitle = "WPF UI - ytdlProtocol.Modern";
+    private string _applicationTitle = "YT-DL-Protocol";
 
     [ObservableProperty]
     private ObservableCollection<object> _menuItems =
     [
         new NavigationViewItem()
         {
-            Content = "Home",
+            Content = "Configure",
             Icon = new SymbolIcon { Symbol = SymbolRegular.Home24 },
             TargetPageType = typeof(Views.Pages.DashboardPage)
         },
@@ -32,6 +32,6 @@ public partial class MainWindowViewModel : ObservableObject
     [ObservableProperty]
     private ObservableCollection<MenuItem> _trayMenuItems =
     [
-        new MenuItem { Header = "Home", Tag = "tray_home" }
+        new MenuItem { Header = "Configure", Tag = "tray_home" }
     ];
 }
