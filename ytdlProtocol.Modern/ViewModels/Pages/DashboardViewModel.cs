@@ -39,9 +39,6 @@ public partial class DashboardViewModel : ObservableObject
 
         //if (canRegister)
         //{
-        //    SaveButton.Enabled = canRegister;
-        //    RegisterButton.Enabled = !isRegistered;
-        //    UnregisterButton.Enabled = isRegistered;
         //    UpdateButton.Visible = true;
         //    ProtocolStatusPictureBox.Image = isRegistered ? Resources.success : Resources.warning;
         //    ProtocolStatusPictureBox.Cursor = Cursors.Default;
@@ -56,6 +53,10 @@ public partial class DashboardViewModel : ObservableObject
         //    ProtocolToolTip.SetToolTip(ProtocolStatusPictureBox, "You need to set up the required paths below before you can register the protocol.");
         //    ProtocolStatusLabel.Cursor = Cursors.Help;
         //}
+
+        RegisterCommand.NotifyCanExecuteChanged();
+        UnregisterCommand.NotifyCanExecuteChanged();
+        SaveCommand.NotifyCanExecuteChanged();
     }
 
     [RelayCommand]
@@ -84,9 +85,9 @@ public partial class DashboardViewModel : ObservableObject
 
         UpdateCanRegisterState();
     }
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(IsNotRegistered))]
     public void Register() => HandleProtocolRegistering(true);
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(IsRegistered))]
     public void Unregister() => HandleProtocolRegistering(false);
 
     private void HandleProtocolRegistering(bool register)
@@ -107,7 +108,7 @@ public partial class DashboardViewModel : ObservableObject
         Settings.Default.Reload();
         UpdateCanRegisterState();
     }
-    [RelayCommand]
+    [RelayCommand(CanExecute = nameof(CanRegister))]
     private void Save()
     {
         if (!File.Exists(YtDlDownloadPath) || !Directory.Exists(DownloadPath))
@@ -174,4 +175,10 @@ public partial class DashboardViewModel : ObservableObject
         //    ProtocolStatusLabel.Cursor = Cursors.Default;
         //}
     }
+
+    private bool IsRegistered() => Utils.IsProtocolRegistered(Settings.Default.protocol_ytdl);
+    private bool IsNotRegistered() => !IsRegistered();
+    private bool CanRegister()
+        => File.Exists(Settings.Default.ytdl_path) || File.Exists(YtDlDownloadPath)
+        && Directory.Exists(Settings.Default.download_path) || Directory.Exists(DownloadPath);
 }

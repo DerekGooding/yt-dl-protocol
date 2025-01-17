@@ -11,6 +11,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="Assets\AppImages\1.png" />
+    <Content Include="Assets\AppImages\2.png" />
+    <Content Include="Assets\AppImages\3.png" />
+    <Content Include="Assets\AppImages\Demo.mp4" />
+    <Content Include="Assets\AppImages\error.png" />
+    <Content Include="Assets\AppImages\folder.png" />
+    <Content Include="Assets\AppImages\icon.ico" />
+    <Content Include="Assets\AppImages\info.png" />
+    <Content Include="Assets\AppImages\pending.png" />
+    <Content Include="Assets\AppImages\rules.png" />
+    <Content Include="Assets\AppImages\spinner.gif" />
+    <Content Include="Assets\AppImages\success.png" />
+    <Content Include="Assets\AppImages\update.png" />
+    <Content Include="Assets\AppImages\warning.png" />
     <Content Include="wpfui-icon.ico" />
   </ItemGroup>
 
@@ -21,6 +35,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Assets\AppImages\1.png" />
+    <None Remove="Assets\AppImages\2.png" />
+    <None Remove="Assets\AppImages\3.png" />
+    <None Remove="Assets\AppImages\Demo.mp4" />
+    <None Remove="Assets\AppImages\error.png" />
+    <None Remove="Assets\AppImages\folder.png" />
+    <None Remove="Assets\AppImages\icon.ico" />
+    <None Remove="Assets\AppImages\info.png" />
+    <None Remove="Assets\AppImages\pending.png" />
+    <None Remove="Assets\AppImages\rules.png" />
+    <None Remove="Assets\AppImages\spinner.gif" />
+    <None Remove="Assets\AppImages\success.png" />
+    <None Remove="Assets\AppImages\update.png" />
+    <None Remove="Assets\AppImages\warning.png" />
     <None Remove="Assets\wpfui-icon-256.png" />
     <None Remove="Assets\wpfui-icon-1024.png" />
   </ItemGroup>
