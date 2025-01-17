@@ -47,5 +47,6 @@
             FontWeight="Medium"
             Text="About ytdlProtocol.Modern" />
         <TextBlock Margin="0,12,0,0" Text="{Binding ViewModel.AppVersion, Mode=OneWay}" />
+        <TextBlock Text="{Binding ViewModel.AboutInfo}" TextWrapping="Wrap" Width="300" HorizontalAlignment="Left"/>
     </StackPanel>
 </Page>

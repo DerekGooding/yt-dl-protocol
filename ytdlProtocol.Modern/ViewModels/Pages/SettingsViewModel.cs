@@ -4,13 +4,16 @@ using Wpf.Ui.Controls;
 namespace ytdlProtocol.Modern.ViewModels.Pages;
 public partial class SettingsViewModel : ObservableObject, INavigationAware
 {
-    private bool _isInitialized = false;
+    private bool _isInitialized;
 
     [ObservableProperty]
-    private string _appVersion = String.Empty;
+    private string _appVersion = string.Empty;
 
     [ObservableProperty]
     private ApplicationTheme _currentTheme = ApplicationTheme.Unknown;
+
+    [ObservableProperty]
+    private string _aboutInfo = "This utility allows instant downloading of any media supported by youtube-dl(p) using a custom protocol called from a bookmarklet to handle the download without leaving your webbrowser.";
 
     public void OnNavigatedTo()
     {
@@ -28,7 +31,7 @@ public partial class SettingsViewModel : ObservableObject, INavigationAware
         _isInitialized = true;
     }
 
-    private string GetAssemblyVersion() 
+    private string GetAssemblyVersion()
         => System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString()
             ?? string.Empty;
 
