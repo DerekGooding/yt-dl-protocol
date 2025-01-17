@@ -9,7 +9,6 @@ namespace yt_dl_protocol
 {
     public static class Utils
     {
-
         public static bool ValidateExecutableIsYtDl(string executable)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo
@@ -124,14 +123,15 @@ namespace yt_dl_protocol
             Registry.ClassesRoot.DeleteSubKeyTree(protocol, false);
             bool cleanedOrphanedKeys = RemoveOrphanedKeys(protocol);
             if (cleanedOrphanedKeys)
+            {
                 if (silent)
                     MessageBox.Show("The protocol has been unregistered. To re-register, run the program again to open the configuration menu.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 if (silent)
                     MessageBox.Show("The protocol has been unregistered, but some orphaned registry keys may not be removed.\n\nTo re-register, run the program again to open the configuration menu.", "Success with warnings", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
             return false;
         }
-
     }
 }

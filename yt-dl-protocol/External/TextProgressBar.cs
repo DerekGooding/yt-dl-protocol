@@ -66,10 +66,7 @@ namespace ProgressBarSample
         [Description("If it's empty, % will be shown"), Category("Additional Options"), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
         public string CustomText
         {
-            get
-            {
-                return _text;
-            }
+            get => _text;
             set
             {
                 _text = value;
@@ -97,6 +94,10 @@ namespace ProgressBarSample
                     case (ProgressBarDisplayMode.TextAndPercentage):
                         text = $"{CustomText}: {PercentageStr}";
                         break;
+                    case ProgressBarDisplayMode.NoText:
+                        break;
+                    case ProgressBarDisplayMode.CustomText:
+                        break;
                 }
 
                 return text;
@@ -104,16 +105,10 @@ namespace ProgressBarSample
             set { }
         }
 
-        private string PercentageStr { get { return $"{(int)((float)Value - Minimum) / ((float)Maximum - Minimum) * 100} %"; } }
+        private string PercentageStr => $"{(int)((float)Value - Minimum) / ((float)Maximum - Minimum) * 100} %";
 
-        private string CurrProgressStr
-        {
-            get
-            {
-                return $"{Value}/{Maximum}";
-            }
-        }
-        
+        private string CurrProgressStr => $"{Value}/{Maximum}";
+
         public TextProgressBar()
         {
             Value = Minimum;
