@@ -34,21 +34,21 @@
             <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
                 <ui:TextBlock Text="Executable path:" Width="150" VerticalAlignment="Center"/>
                 <ui:TextBox Width="270" Text="{Binding ViewModel.YtDlDownloadPath}"
-                            PlaceholderText="eg. C:\UserName\Path\"/>
+                            PlaceholderText="eg. C:\Path\yt-dlp.exe"/>
                 <ui:Button Content="..." Command="{Binding ViewModel.BrowseCommand}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
                 <ui:TextBlock Text="Download path:" Width="150" VerticalAlignment="Center"/>
                 <ui:TextBox Width="270" Text="{Binding ViewModel.DownloadPath}"
-                            PlaceholderText="eg. C:\UserName\Path\Downloads"/>
+                            PlaceholderText="eg. C:\UserName\Downloads"/>
                 <ui:Button Content="..." Command="{Binding ViewModel.BrowseDownloadPathCommand}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
                 <ui:TextBlock Text="Additional args:" Width="150" VerticalAlignment="Center"/>
                 <ui:TextBox Width="300" Text="{Binding ViewModel.AdditionalArgs}"
-                            PlaceholderText="eg. I don't know what this is..."/>
+                            PlaceholderText="eg. ask a dev what this does..."/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
