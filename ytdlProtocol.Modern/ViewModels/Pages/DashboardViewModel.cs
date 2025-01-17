@@ -28,11 +28,11 @@ public partial class DashboardViewModel : ObservableObject
 
     private void UpdateCanRegisterState()
     {
-        bool isRegistered = Utils.IsProtocolRegistered(Settings.Default.protocol_ytdl);
-        bool isValidYtDlPath = File.Exists(Settings.Default.ytdl_path) || File.Exists(YtDlDownloadPath);
-        bool isValidDlPath = Directory.Exists(Settings.Default.download_path) || Directory.Exists(DownloadPath);
+        //bool isRegistered = Utils.IsProtocolRegistered(Settings.Default.protocol_ytdl);
+        //bool isValidYtDlPath = File.Exists(Settings.Default.ytdl_path) || File.Exists(YtDlDownloadPath);
+        //bool isValidDlPath = Directory.Exists(Settings.Default.download_path) || Directory.Exists(DownloadPath);
 
-        bool canRegister = isValidYtDlPath && isValidDlPath;
+        //bool canRegister = isValidYtDlPath && isValidDlPath;
 
         //TODO
         //UpdateButton.Enabled = isValidYtDlPath;
